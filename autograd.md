@@ -36,7 +36,7 @@ print(b.requires_grad)
 ## TODO more about in-place operation, and autograd mechanics
 
 # 张量（Tensor）
-`torch.Tensor`是用来存储单一数据类型的多维矩阵。torch在CPU和GPU上各支持8种数据类型。(`torch.float16, torch.float32, torch.float64, torch.uint8, torch.int8, torch.int16, torch.int32, torch.int64`)
+`torch.Tensor`是用来存储单一数据类型的多维矩阵。torch在CPU和GPU上各支持8种数据类型。(`torch.float16, torch.float32, torch.float64, torch.uint8, torch.int8, torch.int16, torch.int32, torch.int64`)
 
 `torch.tensor()`会引起数据拷贝，如果已有一个numpy的数组，可以用`torch.as_tensor()`避免数据拷贝。
 ```python
