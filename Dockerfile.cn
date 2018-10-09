@@ -1,0 +1,12 @@
+FROM ubuntu:16.04
+
+# install python 3.6
+RUN echo "deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ xenial main restricted\ndeb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted\ndeb-src http://archive.ubuntu.com/ubuntu xenial main restricted\ndeb-src http://mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe\ndeb http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted\ndeb-src http://mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe\ndeb http://mirrors.aliyun.com/ubuntu/ xenial universe\ndeb http://mirrors.aliyun.com/ubuntu/ xenial-updates universe\ndeb http://mirrors.aliyun.com/ubuntu/ xenial multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ xenial-updates multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse\ndeb http://archive.canonical.com/ubuntu xenial partner\ndeb-src http://archive.canonical.com/ubuntu xenial partner\ndeb http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted\ndeb-src http://mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe\ndeb http://mirrors.aliyun.com/ubuntu/ xenial-security universe\ndeb http://mirrors.aliyun.com/ubuntu/ xenial-security multiverse" > /etc/apt/sources.list && apt-get update && apt-get install -y software-properties-common build-essential && apt-get clean
+# RUN apt-get update && apt-get install -y software-properties-common build-essential && apt-get clean
+# && add-apt-repository ppa:deadsnakes/ppa
+RUN mkdir /tmp/python37 && cd /tmp/python37 && wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz && tar xvf Python-3.7.0.tar.xz && cd Python-3.7.0 && ./configure && make altinstall
+
+# RUN apt-get update && apt-get install -y python3.6 && apt-get install -y python3.6-dev
+# RUN cd /usr/bin; rm python; ln -s python3.6 python
+RUN cd /usr/bin; rm python; ln -s python3.7 python
+RUN curl https://bootstrap.pypa.io/get-pip.py | python
